@@ -3,6 +3,7 @@ from itertools import count
 
 # BUILD LOG
 # Version 1.0, created the main python framework with class and test dicitonary.
+# Version 1.1, added in code for custom CSS and for Images
 
 # Ver1.0 Class Dog creation
 class Dog: 
@@ -26,6 +27,17 @@ dog_list = [
     Dog("Max", 4, "Male", "Bulldog", 3, False),
     Dog("Zula", 6, "Male", "Border Collie", 5, True)
     ]
+
+# Images Ver1.1
+@route('/image/<filename>')
+def server_static(filename):
+    return static_file(filename, root='./Assets')
+
+#Code to be able to link custom css Ver1.1
+@route('/<filename>.css')
+def stylesheets(filename):
+    return static_file('{}.css'.format(filename), root='./Assets')
+
 
 # Ver1.0 Index page setup
 @route('/')
