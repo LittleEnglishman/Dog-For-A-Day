@@ -22,11 +22,11 @@ class Dog:
 
 # Ver1.0 data dictionary
 dog_list = [
-    Dog("Bruce", 5, "Male", "Bulldog", 3, True, "/dog_image/Bruce.jpg"),
-    Dog("Moses", 12, "Female", "Pussy Cat", 5, True, "/dog_image/Moses.jpg"),
-    Dog("Rex", 3, "Female", "Alpaca", 1, False, "/dog_image/Rex.jpg"),
-    Dog("Max", 4, "Male", "Bulldog", 3, False, "/dog_image/Max.jpg"),
-    Dog("Zula", 6, "Male", "Border Collie", 5, True, "/dog_image/Zula.png")
+    Dog("Bruce", 5, "Male", "Bulldog", 3, 1, "/dog_image/Bruce.jpg"),
+    Dog("Moses", 12, "Undecided", "Pussy Cat", 5, 1, "/dog_image/Moses.jpg"),
+    Dog("Rex", 3, "Female", "Alpaca", 1, 0, "/dog_image/Rex.jpg"),
+    Dog("Max", 4, "Male", "Bulldog", 3, 0, "/dog_image/Max.jpg"),
+    Dog("Zula", 6, "Male", "Border Collie", 5, 1, "/dog_image/Zula.png")
     ]
 
 # Images Ver1.1
