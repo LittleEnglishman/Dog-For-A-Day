@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	% include('Templates/head.html')
+	% include('Templates/navBar.html')
+	<body class="grey lighten-4">
+
+		<div class="divider"></div>
+		<!--sad main container-->
+		<div class="container white">
+		
+			<!-- Title -->
+			<h2 class="center-align"> {{dog.name}} </h2>
+			<div style="margin-left: 10px; margin-right: 10px;" class="divider"></div>
+			
+			<div class ="row">
+				<div class = "col s6">
+					<h4> This is {{dog.name}} </h4>
+					<img class="showcase" src="{{dog.image}}" alt="Dog Image"/>
+				</div>	
+				
+				<div class = "col s6">
+				Words about the dog go here
+				</div>
+			</div>
+			
+		</div>
+
+	</body>
+</html>

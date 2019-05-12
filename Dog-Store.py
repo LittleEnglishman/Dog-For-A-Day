@@ -12,6 +12,7 @@ class Dog:
     
     # Set up initialised variable
     def __init__(self, name, age, gender, breed, friendliness, available, image):
+        self.id = next(self._ids)
         self.name = name
         self.age = age
         self.gender = gender
@@ -57,10 +58,31 @@ def index():
 @route('/showcase-page')
 @view('showcase-page')
 def showcase_page():
-    #set dog_list to the data variable and return that to the page
+    # Set dog_list to the data variable and return that to the page
     data = dict(dogs = dog_list)
     return data
 
+# Ver 3.0 Personal Dog Pages
+@route('/dog-page/<dog_id>')
+@view('dog-page')
+def dog_page(dog_id):
+    # Set dog_id to integer
+    dog_id = int(dog_id)
+    found_dog = None
+    
+    # Loop through dog list to find the target dog
+    for dog in dog_list:
+        if dog.id == dog_id:
+            found_dog = dog
+            break
+    #Return dogs data to page in form of a dictionary
+    data = dict(dog = found_dog)
+    return data
+    
+    
+    
+    
+    
 # Bottle run 
 run(host ='localhost', port = 8080, debug = True)
 

@@ -34,12 +34,12 @@
 									</div>
 									
 									% if dog.available == 1:
-										<a href="/" class="waves-effect waves-light btn purple accent-3" style="width: 50%; margin: auto;" type="submit" name="action">
+										<a href="/dog-page/{{dog.id}}" class="waves-effect waves-light btn purple accent-3" style="width: 50%; margin: auto;" type="submit" name="action">
 											👀
 											<!-- <i class="material-icons right">pets</i> -->
 										</a>
 									% else:
-										<a href="/" class="waves-effect waves-light btn disabled" style="width: 50%; margin: auto;" type="submit" name="action">
+										<a href="/dog-page/{{dog.id}}" class="waves-effect waves-light btn disabled" style="width: 50%; margin: auto;" type="submit" name="action">
 											👀
 											<!-- <i class="material-icons right">pets</i> -->
 										</a>
