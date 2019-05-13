@@ -1,5 +1,6 @@
 from bottle import run, route, get, post, request, view, static_file
 from itertools import count
+from datetime import datetime, timedelta
 
 # BUILD LOG
 # Version 1.0, created the main python framework with class and test dicitonary.
@@ -12,7 +13,13 @@ class Dog:
     
     # Set up initialised variable
     def __init__(self, name, age, gender, breed, friendliness, available, image):
+        
+        #Add new ID to dog
         self.id = next(self._ids)
+        
+        # Date to be added later
+        self.date = None
+        
         self.name = name
         self.age = age
         self.gender = gender
@@ -20,6 +27,7 @@ class Dog:
         self.friendliness = friendliness
         self.available = available
         self.image = image
+        
 
 # Ver1.0 data dictionary
 dog_list = [
@@ -78,6 +86,29 @@ def dog_page(dog_id):
     #Return dogs data to page in form of a dictionary
     data = dict(dog = found_dog)
     return data
+
+# Ver3.1 Rent a dog success
+@route('/dog-rent-success/<dog_id>')
+@view('dog-rent-success')
+def dog_rent_success(dog_id): 
+    # Set dog_id to integer
+    dog_id = int(dog_id)
+    found_dog = None
+    date = None
+
+    # Loop through dog list to find the target dog
+    for dog in dog_list:
+        if dog.id == dog_id:
+            found_dog = dog
+            break
+    # Return dogs data to page in form of a dictionary
+    data = dict(dog = found_dog)
+    found_dog.available = 0
+    
+    #Set new available date for the dog to be rented out + 1 day from today
+    date = datetime.now() + timedelta(days=1)
+    found_dog.date = date.strftime("%m/%d/%Y")  #datetime.now() + timedelta(days=1)
+    return data  
     
     
     

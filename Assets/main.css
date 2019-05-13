@@ -6,7 +6,10 @@ body {
 h4 {
 	font-family: 'Roboto Slab', serif;
 }
-
+sub-text {
+	color: light-grey;
+	
+}
 	
 .nav-wrapper{
 	background-color: white;
@@ -32,4 +35,12 @@ h4 {
 	width: 100%;
 	height: 600px;
 	object-fit: cover;
+}
+
+.info-block {
+	margin-top: 80px;
+	
+}	
+.stars {
+	color: #d500f9;
 }

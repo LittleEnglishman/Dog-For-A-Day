@@ -39,10 +39,11 @@
 											<!-- <i class="material-icons right">pets</i> -->
 										</a>
 									% else:
-										<a href="/dog-page/{{dog.id}}" class="waves-effect waves-light btn disabled" style="width: 50%; margin: auto;" type="submit" name="action">
+										<a href="/dog-page/{{dog.id}}" class="waves-effect waves-light btn grey lighten-1 " style="width: 50%; margin: auto;" type="submit" name="action">
 											👀
 											<!-- <i class="material-icons right">pets</i> -->
 										</a>
+										<p class="sub-text"> Next available: {{dog.date}} </p>
 									% end
 								</div>
 						</div>
