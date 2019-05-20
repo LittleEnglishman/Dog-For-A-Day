@@ -5,6 +5,13 @@ from datetime import datetime, timedelta
 # BUILD LOG
 # Version 1.0, created the main python framework with class and test dicitonary.
 # Version 1.1, added in code for custom CSS and for Images
+# Version 2.0, added in ability to use images/css files. Created the showcase page
+# Version 3.0, made the personal dogs pages
+# Version 3.1, added in rent functionality
+# Version 4.0 , made the add a new dog function/the success page.
+
+
+
 
 # Ver1.0 Class Dog creation
 class Dog: 
@@ -109,6 +116,34 @@ def dog_rent_success(dog_id):
     date = datetime.now() + timedelta(days=1)
     found_dog.date = date.strftime("%m/%d/%Y")  #datetime.now() + timedelta(days=1)
     return data  
+    
+# Ver 4.0 Creating the new Dog page
+@route('/new-dog')
+@view('new-dog')
+def new_dog():
+    # Set dog_list to the data variable and return that to the page
+    data = dict(dogs = dog_list)
+    return data    
+
+# New dog page action
+@route('/new-dog-action', method="POST")
+@view('new-dog-action')
+def new_dog_action():
+    name = request.forms.get("name")
+    age = request.forms.get("age")
+    gender = request.forms.get("gender")
+    breed = request.forms.get("breed")
+    friendliness = int(request.forms.get("friendliness"))
+    
+    # Create new Dog object (using placeholder image for now)
+    new_dog = Dog(name,age,gender,breed,friendliness, 1, "/dog_image/Bruce.jpg")
+    
+    # Add new dog to the list oof
+    dog_list.append(new_dog)
+    
+    # Return data in the form of a dictionary
+    data = dict(dog = new_dog)
+    return data    
     
     
     

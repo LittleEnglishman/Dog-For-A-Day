@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	% include('Templates/head.html')
+	% include('Templates/navBar.html')
+	<body class="grey lighten-4">
+
+		<div class="divider"></div>
+		<!--sad main container-->
+		<div class="container white">
+		
+			
+			<div class = "row">
+				<div class = "col s6">
+					<h4> Please Enter Your Dogs Details </h4>
+					
+					<!-- New Dog Form -->
+					<form action="/new-dog-action" method="POST" style="padding: 15px;">
+						
+							<!-- First row containing name and dob -->
+						<div class="row">
+							<div class="input-field">
+								<input id="inp_name" name="name" type="text" class="validate">
+								<label for="inp_title">Whats your dogs name?</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<input id="inp_breed" type="text" name="breed" class="validate">
+								<label for="inp_breed">Dogs Breed</label>
+							</div>
+						
+							
+							
+						
+							<div class="input-field col s6">
+								<input id="inp_age" type="number" name="age" class="validate">
+								<label for="inp_age">Dogs Age</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<p class="range-field">
+									<input name="friendliness" type="range" id="inp_friendliness" min="0" max="5" />
+								</p>
+								<label for="inp_friendliness">Dogs Friendlineess Rating / 5</label>
+								<p>Rating: <span id="demo"></span></p>
+							</div>
+						</div>
+						<!-- button for things -->
+						<!--class="btn waves-effect waves-light"-->
+						<button  class="waves-effect waves-light btn purple accent-3" type="submit" name="action"> Submit
+							<i class="material-icons right">send</i>
+						</button>
+					</form>
+				</div>
+			</div>
+			
+		</div>
+	<script>
+	var slider = document.getElementById("inp_friendliness");
+	var output = document.getElementById("demo");
+	output.innerHTML = slider.value;
+
+	slider.oninput = function() {
+	  output.innerHTML = this.value;
+	}
+</script>
+	</body>
+	
+</html>
