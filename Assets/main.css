@@ -13,6 +13,7 @@ sub-text {
 	
 .nav-wrapper{
 	background-color: white;
+	height: 140px;
 
 }
 .brand-logo center {
@@ -39,9 +40,23 @@ sub-text {
 
 .info-block {
 	margin-top: 80px;
-	
 }	
 .stars {
 	color: #d500f9;
 }
 
+.small-image {
+	width: 80px;
+	height: auto;
+}
+
+.banner {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+
+.banner img {
+	max-width: 100%;
+	max-height: 100%;
+}

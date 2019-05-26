@@ -48,7 +48,7 @@ dog_list = [
 # Images Ver1.1
 @route('/image/<filename>')
 def server_static(filename):
-    return static_file(filename, root='./Assets')
+    return static_file(filename, root='./Assets/Images')
 
 # Dog Images Ver2.0
 @route('/dog_image/<filename>')
