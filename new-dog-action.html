@@ -9,11 +9,14 @@
 		<div class="container white">
 		
 			<!-- Title -->
-			<h2 class="center-align"> Oof </h2>
+			<h2 class="center-align"> You've successfully added your dog! </h2>
 			<div style="margin-left: 10px; margin-right: 10px;" class="divider"></div>
 			
 			<div class ="row">
-				<p> New Dog Action </p>
+				<div class="col s6">
+					<img class="showcase" src="{{dog.image}}" alt="Dog Image"/>
+				</div>
+				
 				<div class = "col s6">
 					<div class = "info-block">
 						<h6> Name: <span>{{dog.name}}</span> </h6>
@@ -32,20 +35,13 @@
 						% end
 					</div>
 					
-					<!-- Rent this dog button for available dogs -->
+					<!-- Back Home -->
 					% if dog.available == 1:
-						<a href="/dog-rent-success/{{dog.id}}" class="waves-effect waves-light btn purple accent-3" style="margin-top: 40px;" type="submit" name="action">
-							I want this one!
+						<a href="/showcase-page" class="waves-effect waves-light btn purple accent-3" style="margin-top: 40px;" type="submit" name="action">
+							See your dog in the list!
 							<i class="material-icons right">pets</i> 
 						</a>
-						
-					<!-- Unavailable dogs -->
-					% else:
-						<a  class="waves-effect waves-light btn disabled " style="margin-top: 40px;" type="submit" name="action">
-							This dog is currently out!
-							<!-- <i class="material-icons right">pets</i> -->
-						</a>
-					% end
+					
 				</div>
 			</div>
 			
