@@ -45,6 +45,30 @@ dog_list = [
     Dog("Zula", 6, "Male", "Border Collie", 5, 1, "/dog_image/Zula.png")
     ]
 
+# ver 6.0 
+class Person:
+    # Give each Person object a key number
+    _ids = count(0)    
+    
+    def __init__(self, name, email):
+        # Add new ID to person
+        self.id = next(self._ids)
+        
+        self.name = name
+        self.email = email
+        
+        # The dog will be added later
+        self.dog = None
+        
+        
+        
+# Ver 6.0 data dictionary of persons
+person_list = [
+    Person("Moses", "Moses@gmail.com"),
+    Person("Tom", "Tom@gmail.com"),
+    Person("Jeremy", "Jeremy@gmail.com")
+    ]
+
 # Images Ver1.1
 @route('/image/<filename>')
 def server_static(filename):
@@ -98,6 +122,20 @@ def dog_page(dog_id):
 @route('/dog-rent-success/<dog_id>')
 @view('dog-rent-success')
 def dog_rent_success(dog_id): 
+    """
+    # Ver 6.0 Code added for human form
+    name = request.forms.get("person-name")
+    email = request.forms.get("email") 
+    new_person = Person(name, email)
+    new_person.dog = dog_id
+    
+    human_data = dict(human = new_person)
+    
+    person_list.append(new_person)
+"""
+    
+    
+    
     # Set dog_id to integer
     dog_id = int(dog_id)
     found_dog = None
@@ -115,7 +153,9 @@ def dog_rent_success(dog_id):
     #Set new available date for the dog to be rented out + 1 day from today
     date = datetime.now() + timedelta(days=1)
     found_dog.date = date.strftime("%m/%d/%Y")  #datetime.now() + timedelta(days=1)
-    return data  
+    
+    # Return the created data to the page
+    return data 
     
 # Ver 4.0 Creating the new Dog page
 @route('/new-dog')
