@@ -57,9 +57,10 @@ class Person:
         self.name = name
         self.email = email
         
-        # The dog will be added later
+        # These will be added later
         self.dog = None
-        
+        self.dog_name = None
+        self.return_date = "0/0/0"
         
         
 # Ver 6.0 data dictionary of persons
@@ -119,43 +120,37 @@ def dog_page(dog_id):
     return data
 
 # Ver3.1 Rent a dog success
-@route('/dog-rent-success/<dog_id>')
+@route('/dog-rent-success/<dog_id>', method = "POST")
 @view('dog-rent-success')
 def dog_rent_success(dog_id): 
-    """
+
     # Ver 6.0 Code added for human form
     name = request.forms.get("person-name")
     email = request.forms.get("email") 
     new_person = Person(name, email)
     new_person.dog = dog_id
     
-    human_data = dict(human = new_person)
     
-    person_list.append(new_person)
-"""
-    
-    
-    
-    # Set dog_id to integer
+    # Find the dog being rented
     dog_id = int(dog_id)
     found_dog = None
-    date = None
-
-    # Loop through dog list to find the target dog
     for dog in dog_list:
         if dog.id == dog_id:
             found_dog = dog
-            break
-    # Return dogs data to page in form of a dictionary
-    data = dict(dog = found_dog)
-    found_dog.available = 0
+            break    
+    # Add dogs name to the person
+    new_person.dog_name = found_dog.name
+    
     
     #Set new available date for the dog to be rented out + 1 day from today
     date = datetime.now() + timedelta(days=1)
-    found_dog.date = date.strftime("%m/%d/%Y")  #datetime.now() + timedelta(days=1)
+    new_person.return_date = date.strftime("%d/%m/%Y")  #datetime.now() + timedelta(days=1)
     
+    human_data = dict(human = new_person)
+    
+    person_list.append(new_person)    
     # Return the created data to the page
-    return data 
+    return human_data
     
 # Ver 4.0 Creating the new Dog page
 @route('/new-dog')
@@ -165,7 +160,7 @@ def new_dog():
     data = dict(dogs = dog_list)
     return data    
 
-# New dog page action
+# Ver 4.0 New dog page action
 @route('/new-dog-action', method="POST")
 @view('new-dog-action')
 def new_dog_action():
@@ -185,9 +180,24 @@ def new_dog_action():
     data = dict(dog = new_dog)
     return data    
     
-    
-    
-    
+# Ver 7.0 return page   
+@route('/return-page')
+@view('return-page')
+def return_page():
+    # Set dog_list to the data variable and return that to the page
+    data = dict(dogs = dog_list)
+    return data
+
+@route('/return-success')
+@view('return-success')
+def return_success():
+    dog_id = int(dog_id)
+    found_dog = None
+    for dog in dog_list:
+        if dog.id == dog_id:
+            found_dog = dog
+            break    
+        
     
 # Bottle run 
 run(host ='localhost', port = 8080, debug = True)
