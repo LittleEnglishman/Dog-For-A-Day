@@ -138,6 +138,8 @@ def dog_rent_success(dog_id):
         if dog.id == dog_id:
             found_dog = dog
             break    
+    # Set dogs availablity to 0 (unavailable)
+    found_dog.available = 0
     # Add dogs name to the person
     new_person.dog_name = found_dog.name
     
@@ -187,17 +189,36 @@ def return_page():
     # Set dog_list to the data variable and return that to the page
     data = dict(dogs = dog_list)
     return data
-
-@route('/return-success')
+# Ver 7.0
+@route('/return-success/<dog_id>')
 @view('return-success')
-def return_success():
+def return_success(dog_id):
+    
+    # Find the dog within the list
     dog_id = int(dog_id)
     found_dog = None
     for dog in dog_list:
         if dog.id == dog_id:
             found_dog = dog
             break    
+    # Set availablity to 1
+    data = dict(dog = found_dog)
+    found_dog.available = 1
+    
+    
+    # Find the owner of the current dog
+    found_person = None
+    for person in person_list:
+        if person.dog_name == dog.name:
+            found_person = person
+            break
+    # Remove dog name from person class only if it doesn't have one to begin with
+    if found_person.dog_name != None:
+        found_person.dog_name = None
         
+    return data  
+
+
     
 # Bottle run 
 run(host ='localhost', port = 8080, debug = True)
