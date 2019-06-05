@@ -1,7 +1,7 @@
 from bottle import run, route, get, post, request, view, static_file
 from itertools import count
 from datetime import datetime, timedelta
-
+"""
 # BUILD LOG
 # Version 1.0, created the main python framework with class and test dicitonary.
 # Version 1.1, added in code for custom CSS and for Images
@@ -11,6 +11,9 @@ from datetime import datetime, timedelta
 # Version 4.0 , made the add a new dog function/the success page.
 
 
+
+# Version 8.0, made the new function for the admin page
+"""
 
 
 # Ver1.0 Class Dog creation
@@ -221,7 +224,13 @@ def return_success(dog_id):
         
     return data  
 
-
+# Ver 8.0 Admin Page
+@route("/admin-page")
+@view("admin-page")
+def admin_page():
+    # Set person_list to the data variable and return that to the page
+    data = dict(humans = person_list)
+    return data      
     
 # Bottle run 
 run(host ='localhost', port = 8080, debug = True)

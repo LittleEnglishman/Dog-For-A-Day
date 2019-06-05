@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	% include('Templates/head.html')
+	% include('Templates/navBar.html')
+	<body class="grey lighten-4">
+
+		<div class="divider"></div>
+		<!--sad main container-->
+		<div class="container white">
+		
+			<!-- Title -->
+			<h2 class="center-align"> Admin Page </h2>
+			<div style="margin-left: 10px; margin-right: 10px;" class="divider"></div>
+			% for human in reversed(humans):
+				<div class ="row">
+					<div class="col s4">
+						<div class="card horizontal" style="padding: 10px;">
+							<div class="card-stacked">
+								<h4> {{human.name}} </h4>
+								<h6> {{human.email}} </h6>
+								<p> Current dog: {{human.dog_name}} </p>
+							</div>
+							
+							
+						</div>
+					</div>
+				</div>
+			% end
+		</div>
+
+	</body>
+</html>
