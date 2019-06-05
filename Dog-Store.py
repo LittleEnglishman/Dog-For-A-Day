@@ -146,6 +146,9 @@ def dog_rent_success(dog_id):
     
     #Set new available date for the dog to be rented out + 1 day from today
     date = datetime.now() + timedelta(days=1)
+    
+    #Set the date on both the dog and person object
+    dog.date = date.strftime("%d/%m/%Y") 
     new_person.return_date = date.strftime("%d/%m/%Y")  #datetime.now() + timedelta(days=1)
     
     human_data = dict(human = new_person)
