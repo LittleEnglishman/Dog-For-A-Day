@@ -128,6 +128,7 @@ def dog_page(dog_id):
 def dog_rent_success(dog_id): 
 
     # Ver 6.0 Code added for human form
+    # Set the variables
     name = request.forms.get("person-name")
     email = request.forms.get("email") 
     new_person = Person(name, email)
@@ -172,6 +173,8 @@ def new_dog():
 @route('/new-dog-action', method="POST")
 @view('new-dog-action')
 def new_dog_action():
+    
+    # Get the variables form the form
     name = request.forms.get("name")
     age = request.forms.get("age")
     gender = request.forms.get("gender")
