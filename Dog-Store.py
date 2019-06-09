@@ -9,9 +9,9 @@ from datetime import datetime, timedelta
 # Version 3.0, made the personal dogs pages
 # Version 3.1, added in rent functionality
 # Version 4.0 , made the add a new dog function/the success page.
-
-
-
+# Version 5.0, bug fixing
+# Version 6.0, added the ability to track owners names/emails
+# Version 7.0, added the functionality to return the dog
 # Version 8.0, made the new function for the admin page
 """
 
