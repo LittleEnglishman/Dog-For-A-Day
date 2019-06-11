@@ -36,20 +36,36 @@
 						% end
 					</div>
 					
-					<!-- Rent this dog button for available dogs -->
-					% if dog.available == 1:
-						<a href="/dog-rent-success/{{dog.id}}" class="waves-effect waves-light btn purple accent-3" style="margin-top: 40px;" type="submit" name="action">
-							I want this one!
-							<i class="material-icons right">pets</i> 
-						</a>
-						
-					<!-- Unavailable dogs -->
-					% else:
-						<a  class="waves-effect waves-light btn disabled " style="margin-top: 40px;" type="submit" name="action">
-							This dog is currently out!
-							<!-- <i class="material-icons right">pets</i> -->
-						</a>
-					% end
+					
+					<!-- Form to input name and email -->
+					<form action="/dog-rent-success/{{dog.id}}" method="post">
+						<div class="row">
+							<div class="input-field col s6">
+								<input id="inp_name" type="text" name="person-name" class="validate" required>
+								<label for="inp_name">What is your name?</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<input id="inp_email" type="email" name="email" class="validate" required>
+								<label for="inp_email">Email:</label>
+							</div>
+						</div>
+						<!-- Rent this dog button for available dogs -->
+						% if dog.available == 1:
+							<button  class="waves-effect waves-light btn purple accent-3" type="submit" name="action"> I want this one!
+								<i class="material-icons right">pets</i>
+							</button>
+							
+						<!-- Unavailable dogs -->
+						% else:
+							<a  class="waves-effect waves-light btn disabled " style="margin-top: 40px;" type="submit" name="action">
+								This dog is currently out!
+								<!-- <i class="material-icons right">pets</i> -->
+							</a>
+						% end
+					
+					</form>
 				</div>
 			</div>
 			

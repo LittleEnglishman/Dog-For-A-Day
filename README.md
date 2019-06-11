@@ -15,3 +15,7 @@ V3.1 - Se
 V4.0 - Set up a New Dog page for owners to add new dog
 V5.0 - Set up success page for new dog added
 
+V6.0 - Set up a naming system for owners
+V7.0 - Set up return system
+
+V8.0 - Set up way to see owners/dogs list. (For admin)

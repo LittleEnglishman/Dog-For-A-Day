@@ -9,7 +9,7 @@
 		<div class="container white">
 		
 			<!-- Title -->
-			<h2 class="center-align"> Showcase page! </h2>
+			<h2 class="center-align"> Which dog would you like to return? </h2>
 			<div style="margin-left: 10px; margin-right: 10px;" class="divider"></div>
 			% for dog in dogs:
 				<div class ="row">
@@ -27,23 +27,16 @@
 									
 									<div class="divider"></div>
 									
-									<div class="card-info" style="padding-left: 20px;">
-										<h6> Dog Breed: {{dog.breed}}</h6>
-										<h6> Age: {{dog.age}}</h6>
-										<h6> Gender: {{dog.gender}}</h6>
-									</div>
-									
-									% if dog.available == 1:
-										<a href="/dog-page/{{dog.id}}" class="waves-effect waves-light btn purple accent-3" style="width: 50%; margin: auto;" type="submit" name="action">
-											👀
+									% if dog.available == 0:
+										<a href="/return-success/{{dog.id}}" class="waves-effect waves-light btn purple accent-3" style="width: 50%; margin: auto;" type="submit" name="action">
+											Return
 											<!-- <i class="material-icons right">pets</i> -->
 										</a>
 									% else:
-										<a href="/dog-page/{{dog.id}}" class="waves-effect waves-light btn grey lighten-1 " style="width: 50%; margin: auto;" type="submit" name="action">
-											👀
+										<a href="/return-success/{{dog.id}}" class="waves-effect waves-light btn grey lighten-1 " style="width: 50%; margin: auto;" type="submit" name="action">
+											Return
 											<!-- <i class="material-icons right">pets</i> -->
 										</a>
-										<p class="sub-text" style="margin-left: 10px;"> Next available: <b>{{dog.date}}</b> </p>
 									% end
 								</div>
 						</div>
