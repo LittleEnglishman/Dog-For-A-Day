@@ -1,3 +1,4 @@
+# Import all neccessary libraries
 from bottle import run, route, get, post, request, view, static_file
 from itertools import count
 from datetime import datetime, timedelta
@@ -30,6 +31,7 @@ class Dog:
         # Date to be added later
         self.date = None
         
+        # Set self variables to given parameters
         self.name = name
         self.age = age
         self.gender = gender
@@ -41,6 +43,8 @@ class Dog:
 
 # Ver1.0 data dictionary
 dog_list = [
+    
+    # Test Data
     Dog("Bruce", 5, "Male", "Bulldog", 3, 1, "/dog_image/Bruce.jpg"),
     Dog("Moses", 12, "Undecided", "Pussy Cat", 5, 1, "/dog_image/Moses.jpg"),
     Dog("Rex", 3, "Female", "Alpaca", 1, 0, "/dog_image/Rex.jpg"),
@@ -68,6 +72,7 @@ class Person:
         
 # Ver 6.0 data dictionary of persons
 person_list = [
+    # Test Data
     Person("Moses", "Moses@gmail.com"),
     Person("Tom", "Tom@gmail.com"),
     Person("Jeremy", "Jeremy@gmail.com")
@@ -76,16 +81,19 @@ person_list = [
 # Images Ver1.1
 @route('/image/<filename>')
 def server_static(filename):
+    # Return static file from the images folder
     return static_file(filename, root='./Assets/Images')
 
 # Dog Images Ver2.0
 @route('/dog_image/<filename>')
 def server_static(filename):
+    # Return file from the Dogs folder in images
     return static_file(filename, root='./Assets/Images/Dogs')
 
 # Code to be able to link custom css Ver1.1
 @route('/<filename>.css')
 def stylesheets(filename):
+    # Return CSS file from assets folder
     return static_file('{}.css'.format(filename), root='./Assets')
 
 
@@ -155,6 +163,7 @@ def dog_rent_success(dog_id):
     dog.date = date.strftime("%d/%m/%Y") 
     new_person.return_date = date.strftime("%d/%m/%Y")  #datetime.now() + timedelta(days=1)
     
+    # Set human_data as a dictionary of the humans data we collect
     human_data = dict(human = new_person)
     
     person_list.append(new_person)    
@@ -182,7 +191,7 @@ def new_dog_action():
     friendliness = int(request.forms.get("friendliness"))
     
     # Create new Dog object (using placeholder image for now)
-    new_dog = Dog(name,age,gender,breed,friendliness, 1, "/dog_image/Bruce.jpg")
+    new_dog = Dog(name,age,gender,breed,friendliness, 1, "/dog_image/placeholder.jpg")
     
     # Add new dog to the list oof
     dog_list.append(new_dog)
@@ -206,6 +215,8 @@ def return_success(dog_id):
     # Find the dog within the list
     dog_id = int(dog_id)
     found_dog = None
+    
+    # Find dog within the dog_list
     for dog in dog_list:
         if dog.id == dog_id:
             found_dog = dog
